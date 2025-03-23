@@ -21,15 +21,14 @@
 
     <div class="project-links">
       <strong>主页:</strong><a href="https://im.19492035.xyz/file/1742651920554.jpg" target="_blank"
-        rel="noopener noreferrer">资源分享站</a>
+        rel="noopener noreferrer">资源分享</a>
       <strong>作者:</strong><a href="https://im.19492035.xyz/file/1742651920554.jpg" target="_blank"
         rel="noopener noreferrer">zdDown</a>
       <strong>资源:</strong><a href="https://www.zddown.icu" target="_blank"
         rel="noopener noreferrer">项目发布</a>
     </div>
 
-    <div class="powered">Powered by <a href="https://workers.cloudflare.com/" target="_blank"
-        rel="noopener noreferrer">Cloudflare Workers</a></div>
+   
 
     <div style="margin:10px 0;">© 2025 zdDown. All rights reserved.</div>
   </footer>
