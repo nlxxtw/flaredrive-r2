@@ -1,5 +1,10 @@
 <template>
-  <div class="main" @dragenter.prevent @dragover.prevent @drop.prevent="onDrop">
+  <div class="main" 
+      @dragenter.prevent 
+      @dragover.prevent 
+      @drop.prevent="onDrop"
+      :style="{ backgroundImage: `url('${backgroundImageUrl}')` }"
+  >
     <progress v-if="uploadProgress !== null" :value="uploadProgress" max="100"></progress>
     <UploadPopup v-model="showUploadPopup" @upload="onUploadClicked" @createFolder="createFolder"></UploadPopup>
     <button class="upload-button circle" @click="showUploadPopup = true">
@@ -205,6 +210,7 @@ export default {
     showUploadPopup: false,
     uploadProgress: null,
     uploadQueue: [],
+    backgroundImageUrl: "/assets/bg-light.webp"
   }),
 
   computed: {
@@ -263,8 +269,15 @@ export default {
       this.folders = [];
       this.loading = true;
       fetch(`/api/children/${this.cwd}`)
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            this.loading = false;
+            return null;
+          }
+          return res.json();
+        })
         .then((files) => {
+          if (!files) return;
           this.files = files.value;
           if (this.order) {
             this.files.sort((a, b) => {
@@ -619,7 +632,7 @@ export default {
 .main {
   display: flex;
   height: 100%;
-  background-image: url(/assets/bg-light.webp);
+  /* background-image: url(/assets/bg-light.webp); */
   background-size: cover;
   background-position: center;
   overflow-y: auto;
